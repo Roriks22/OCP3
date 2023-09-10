@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sophie Bluel - Architecte d'intérieur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="" />
+    <script
+      src="https://kit.fontawesome.com/4b70c93fe2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./FrontEnd/assets/style.css" />
+    <link rel="stylesheet" href="./FrontEnd/assets/modale.css" />
+    <script src="./FrontEnd/JS/index.js" defer></script>
+    <script src="./FrontEnd/JS/admin.js" defer></script>
+  </head>
+  <body>
+    <!-- Header-->
+    <header>
+      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">projets</a></li>
+          <li><a href="#contact">contact</a></li>
+          <li><a id="loginLink" href="login.html">login</a></li>
+          <li>
+            <img src="./FrontEnd/assets/icons/instagram.png" alt="Instagram" />
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Introduction-->
+    <main>
+      <section id="introduction">
+        <figure>
+          <img src="./FrontEnd/assets/images/sophie-bluel.png" alt="" />
+          <!-- Mofif admin mode-->
+          <button class="modif_intro" id="adminMode">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <p>Modifier</p>
+          </button>
+        </figure>
+        <article>
+          <h2>Designer d'espace</h2>
+          <p>
+            Je raconte votre histoire, je valorise vos idées. Je vous accompagne
+            de la conception à la livraison finale du chantier.
+          </p>
+          <p>
+            Chaque projet sera étudié en commun, de façon à mettre en valeur les
+            volumes, les matières et les couleurs dans le respect de l’esprit
+            des lieux et le choix adapté des matériaux. Le suivi du chantier
+            sera assuré dans le souci du détail, le respect du planning et du
+            budget.
+          </p>
+          <p>
+            En cas de besoin, une équipe pluridisciplinaire peut-être constituée
+            : architecte DPLG, décorateur(trice)
+          </p>
+        </article>
+      </section>
+
+      <!-- Portfolio-->
+      <section id="portfolio">
+        <div class="proje_title">
+          <h2>Mes Projets</h2>
+          <button class="modif_modal" id="adminMode">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <p>Modifier</p>
+          </button>
+        </div>
+
+        <div id="contener_filters">
+          <div id="filters"></div>
+        </div>
+        <div class="gallery"></div>
+      </section>
+
+      <!-- Contact-->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Vous avez un projet ? Discutons-en !</p>
+        <form action="#" method="post">
+          <label for="name">Nom</label>
+          <input type="text" name="name" id="name" />
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+          <label for="message">Message</label>
+          <textarea name="message" id="message" cols="30" rows="10"></textarea>
+          <input type="submit" value="Envoyer" />
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer-->
+    <footer>
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
+
+    <!-- Admin
+	<!- Edit mode -->
+    <div class="editMode" id="adminMode">
+      <i class="fa-regular fa-pen-to-square"></i>
+      <p>Mode édition</p>
+      <button type="button">publier les changements</button>
+    </div>
+
+    <!-- Modale 1 -->
+    <aside id="modal1" class="modal">
+      <div class="modal_fiche">
+        <i class="fa-solid fa-xmark"></i>
+        <h3>Galerie photo</h3>
+        <div class="modal_gallery"></div>
+        <button class="button_add_images">Ajouter une photo</button>
+        <button class="button_delete_gallery">Supprimer la galerie</button>
+      </div>
+    </aside>
+
+    <!--Modale 2-->
+    <aside id="modal2" class="modal">
+      <div class="modal_fiche">
+        <div class="icones">
+          <i class="fa-solid fa-arrow-left"></i>
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="modal_composants">
+          <h3>Ajout photo</h3>
+          <div class="bloc_add_images">
+            <i class="fa-sharp fa-regular fa-image"></i>
+            <button id="button_new_images">+ Ajouter photo</button>
+            <input
+              type="file"
+              id="input_file"
+              accept="image/png, image/jpeg"
+              max="4000000"
+            />
+            <p class="conditions">jpg, png : 4mo max</p>
+          </div>
+          <form action="submit">
+            <label for="title">Titre</label>
+            <input type="text" id="input_title" name="title" />
+            <label for="category">Catégorie</label>
+            <select id="category_list" name="category">
+              <option value="none"></option>
+            </select>
+          </form>
+        </div>
+        <button class="validate_button">Valider</button>
+      </div>
+    </aside>
+  </body>
+</html>
