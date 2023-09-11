@@ -11,8 +11,7 @@ fetch("http://localhost:5678/api/works")
     projects = data;
     galleryProjects(projects);
     modalProjects(projects);
-  })
-  .catch((error) => console.error(error));
+  });
 
 //--------------------PROJETS---------------------//
 
@@ -92,5 +91,4 @@ fetch("http://localhost:5678/api/categories")
       });
       filters.appendChild(bouton);
     }
-  })
-  .catch((error) => console.error(error));
+  });

@@ -53,7 +53,6 @@ const closeModal = () => {
 closeModals.addEventListener("click", () => closeModal());
 modal1.addEventListener("click", (event) => {
   if (event.target === modal1) closeModal();
-  console.log(event.target);
 });
 modal2.addEventListener("click", (event) => {
   if (event.target === modal2) closeModal();
@@ -119,26 +118,22 @@ const modalProjects = (projects) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-      })
-        .then((response) => {
-          //-------Supprime l'élément du DOM correspondant à l'image dans la modale------//
-          if (response.ok) {
-            figureModal.remove();
-            //------Supprime l'élément correspondant dans la galerie principale---------//
-            const imageUrl = figureModal.getAttribute("data-image-url");
-            const galleryImg = document.querySelector(
-              `.gallery figure img[src="${imageUrl}"]`
-            );
-            if (galleryImg) {
-              galleryImg.parentElement.remove();
-            }
-          } else {
-            throw new Error("Erreur lors de la suppression de l'image");
+      }).then((response) => {
+        //-------Supprime l'élément du DOM correspondant à l'image dans la modale------//
+        if (response.ok) {
+          figureModal.remove();
+          //------Supprime l'élément correspondant dans la galerie principale---------//
+          const imageUrl = figureModal.getAttribute("data-image-url");
+          const galleryImg = document.querySelector(
+            `.gallery figure img[src="${imageUrl}"]`
+          );
+          if (galleryImg) {
+            galleryImg.parentElement.remove();
           }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        } else {
+          throw new Error("Erreur lors de la suppression de l'image");
+        }
+      });
     });
     figureModal.append(contenairImg, editImg, corbeilleIcon);
     galleryModal.appendChild(figureModal);
@@ -182,8 +177,7 @@ fetch("http://localhost:5678/api/categories")
       option.textContent = category.name;
       selectCategory.appendChild(option);
     });
-  })
-  .catch((error) => console.error("Error:", error));
+  });
 
 //--------Ajout d'un écouteur d'événement sur le bouton de validation------//
 
@@ -211,7 +205,7 @@ buttonValidate.addEventListener("click", () => {
       .then((response) => response.json())
       .then((data) => {
         alert("Le projet a été ajouté avec succès !");
-        //--------Crée un élément figure avec l'image et le titre-------//
+        //--------Créer un élément figure avec l'image et le titre-------//
 
         const project = document.createElement("figure");
         const imageElement = new Image();
@@ -222,8 +216,7 @@ buttonValidate.addEventListener("click", () => {
         project.id = data.id;
         document.querySelector(".gallery").appendChild(project);
         document.getElementById("modal2").style.display = "none";
-      })
-      .catch((error) => console.error("Error:", error));
+      });
   } else {
     alert("Veuillez remplir tous les champs du formulaire !");
   }
