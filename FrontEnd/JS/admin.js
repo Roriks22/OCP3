@@ -120,7 +120,10 @@ const modalProjects = (projects) => {
         },
       }).then((response) => {
         //-------Supprime l'élément du DOM correspondant à l'image dans la modale------//
-        if (response.ok) {
+        if (
+          response.ok &&
+          window.confirm("Etes-vous sur de vouloir supprimer la photo?")
+        ) {
           figureModal.remove();
           //------Supprime l'élément correspondant dans la galerie principale---------//
           const imageUrl = figureModal.getAttribute("data-image-url");
@@ -216,6 +219,7 @@ buttonValidate.addEventListener("click", () => {
         project.id = data.id;
         document.querySelector(".gallery").appendChild(project);
         document.getElementById("modal2").style.display = "none";
+        window.location.reload();
       });
   } else {
     alert("Veuillez remplir tous les champs du formulaire !");
